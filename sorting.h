@@ -18,5 +18,5 @@ int Save_File(char *Filename, long *Array, int Size);
 void Shell_Insertion_Sort(long *Array, int Size, double *N_Comp, double *N_Move);
 void Improved_Bubble_Sort(long *Array, int Size, double *N_Comp, double *N_Move);
 
-#endif  // __sorting_h_ 
+#endif  
 

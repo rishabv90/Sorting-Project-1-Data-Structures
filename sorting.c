@@ -1,33 +1,28 @@
 
 #include "sorting.h"
-//#include "sorting_main.c"
 
 long * Load_File(char *Filename, int *Size)
 {
 
   FILE *fptr;// file pointer
   long i;
-
   int totalnum;
   
-  //int totalnum = 0;
 
   fptr = fopen(Filename, "r");//open file 
     if(fptr == NULL)//error check
       {
 	*Size = 0;
-
 	printf("\n FPTR IS NULLL \n");
 	return NULL;
       }
  
-    fscanf(fptr, "%d", &totalnum); //getsize of array
+    fscanf(fptr, "%d", &totalnum); //get size of array
+
     if(totalnum == 0)//error check
       {
 	*Size = 0;
 	fclose(fptr);
-
-
 	printf("\n TOTAL NUM IS NULL NIQ\n");
 	return NULL;
       }
@@ -48,15 +43,12 @@ long * Load_File(char *Filename, int *Size)
       }
     
     fclose(fptr);
-    
-
-
+ 
     *Size = totalnum;
 
-
   return array;
-
 }
+
 
 int Save_File(char *Filename, long *Array, int Size)
 {
@@ -70,9 +62,9 @@ int Save_File(char *Filename, long *Array, int Size)
       printf("\nSOMETHING WRONG WITH SAVE FPTR\n");
       return -1;
     }
-  
-  fprintf(fptr, "%d\n", Size);
-  
+
+  fprintf(fptr, "%d\n", Size); 
+
   for(i= 0; i < Size; ++i)
     {
       fprintf(fptr, "%ld\n", Array[i]);
@@ -81,7 +73,6 @@ int Save_File(char *Filename, long *Array, int Size)
 
   fclose(fptr);
   
-
   return wnum;
 }
 
@@ -92,12 +83,10 @@ void Save_Seq1(char * Filename, int N)
   int Size = N;
   int *array = malloc(sizeof(int)* Size);
   array[0] = 1;
-   
   int ptr2 = 0, ptr3 = 0;
   int u2, u3;
-  
   int i = 1;
-  
+
   while(array[i] < Size)
     {
       if((array[ptr2] * 2) == (array[i-1]))//got rid of -1
@@ -125,16 +114,18 @@ void Save_Seq1(char * Filename, int N)
        i++;      
     }
 
-  //saving into a file stuff
+ //saving into a file 
  FILE *fptr = NULL;
-  int wnum = 0;// Written nums
-   i = 0;
-fptr = fopen(Filename, "w");
-if(fptr == NULL)
-    {
-      printf("\nSOMETHING WRONG WITH SAVE FPTR\n");
-      //return -1;
-    }
+ int wnum = 0;// Written nums
+ i = 0;
+
+ fptr = fopen(Filename, "w");
+
+ if(fptr == NULL)
+   {
+     printf("\nSOMETHING WRONG WITH SAVE FPTR\n");
+     //return -1;
+   }
   
   fprintf(fptr, "%d\n", Size);
   
@@ -165,10 +156,11 @@ if(fptr == NULL)
   
   for(i = 1;i < Size; i++)
     {
-      if((array[ptr2] * 2) == (array[i-1]))//got rid of -1
+      if((array[ptr2] * 2) == (array[i-1]))
 	{
 	  ptr2 +=1;
 	}
+
       if((array[ptr3]*3) == (array[i-1]))
 	{
 	  ptr3 += 1;
@@ -182,14 +174,15 @@ if(fptr == NULL)
 	  ptr2 += 1;
 	  array[i] = u2;
 	}
-      else//(u2 > u3)
+      else
 	{
 	  ptr3 += 1;
 	  array[i] = u3;
 	}
+      
       if(array[i]<Size)
 	{break;}
-      // i++;
+      
     }
   
   //sequnce generated till here
@@ -205,9 +198,6 @@ if(fptr == NULL)
   int b = 0;
   int temp;
  
-  
- 
-
   for(a = (counter-1) ; a >= 0 ; a--) //to get the array values from top to first
     {
       k = array[a];
@@ -228,14 +218,12 @@ if(fptr == NULL)
 	  Array[b] = temp;
 	  move = move + 1;
 	  
-	}
-      
+	}    
     }
-
+  
   *N_Comp = comp;
   *N_Move = move;
   free (array);  
-  
 
 }
 
@@ -266,7 +254,7 @@ void Save_Seq2(char*Filename, int N)
 	}           
     }
 
-  //saving into a file stuff
+  //saving into a file
    FILE *fptr = NULL;
    i = 0;
    fptr = fopen(Filename, "w");
@@ -275,8 +263,6 @@ void Save_Seq2(char*Filename, int N)
        printf("\nSOMETHING WRONG WITH SAVE FPTR\n");
        //return -1;
      }
-   
-  
    
    for(i= 0; i < Size; ++i)
      {
@@ -296,7 +282,7 @@ void Save_Seq2(char*Filename, int N)
   //long *array = malloc(sizeof(long)* Size);
  
   int value = 1;//this is useless..testing purpose
-  int size_1 = 0;
+  int size_1 = 0
   size_1 = Size;
   int i = 0;
   int move = 0;
